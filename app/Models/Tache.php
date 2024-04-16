@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Tache extends Model
 {
@@ -12,11 +13,10 @@ class Tache extends Model
 
     protected $fillable = [
         'projet_id',
+        'priorite_id',
+        'progression_id',
         'titre',
         'description',
-        'description',
-        'progression',
-        'priorite',
         'debut',
         'fin',
         'status',
@@ -27,10 +27,10 @@ class Tache extends Model
         return $this->hasMany(Tache::class);
     }
 
-    public function responsables(): HasMany
-    {
-        return $this->hasMany(TacheUser::class);
-    }
+    // public function responsables(): HasMany
+    // {
+    //     return $this->hasMany(TacheUser::class);
+    // }
     public function commentaires(): HasMany
     {
         return $this->hasMany(Commentaire::class);
@@ -38,5 +38,14 @@ class Tache extends Model
     public function livrables(): HasMany
     {
         return $this->hasMany(Livrable::class);
+    }
+
+    public function priorite(): HasOne
+    {
+        return $this->hasOne(Priorite::class);
+    }
+    public function progression(): HasOne
+    {
+        return $this->hasOne(Progression::class);
     }
 }

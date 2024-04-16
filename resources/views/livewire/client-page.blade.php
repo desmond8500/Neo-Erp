@@ -1,3 +1,6 @@
 <div>
-    {{-- Do your work, then step back. --}}
+    <div>
+        @component('components.page-header', ['title'=>'Client', 'breadcrumbs'=>$breadcrumbs])
+        @endcomponent
+    </div>
 </div>

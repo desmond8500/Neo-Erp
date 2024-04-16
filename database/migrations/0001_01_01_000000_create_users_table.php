@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('nom');
             $table->string('fonction');
+            $table->string('avatar')->nullable();
             $table->string('statut')->default(true);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

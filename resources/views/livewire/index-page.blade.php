@@ -1,3 +1,5 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
+    @component('components.page-header', ['title'=> 'Tableau de bord'])
+
+    @endcomponent
 </div>

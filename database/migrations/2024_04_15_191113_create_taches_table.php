@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('taches', function (Blueprint $table) {
             $table->id();
             $table->integer('projet_id')->constrained();
+            $table->integer('priorite_id')->constrained();
+            $table->integer('progression_id')->constrained();
             $table->string('titre');
-            $table->text('description')->nullable();
             $table->text('description')->nullable();
             $table->string('progression');
             $table->string('priorite');
