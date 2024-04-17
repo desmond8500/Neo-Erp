@@ -20,13 +20,13 @@
         @livewire('src.navbar')
 
         <div class="page-wrapper">
-            <div class="page-body">
+            {{-- <div class="page-body"> --}}
                 <div class="container-xl">
 
                     {{ $slot }}
 
                 </div>
-            </div>
+            {{-- </div> --}}
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </body>

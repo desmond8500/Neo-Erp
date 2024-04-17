@@ -2,7 +2,11 @@
     <div class="bg-primary p-2 rounded">
         <div class="row ">
             <a class="col-auto cursor-pointer" href="{{ route('client', ['client_id'=>$client->id ?? 1]) }}">
-                <img src="{{ asset("$client->logo") ?? '' }}" alt="C" class="avatar">
+                @isset ($client->logo)
+                    <img src="{{ asset($client->logo) }}" alt="C" class="avatar">
+                @else
+                    <img src="{{ asset('img/avatar/office.png') }}" alt="C" class="avatar">
+                @endisset
             </a>
             <a class="col cursor-pointer text-white" href="{{ route('client', ['client_id'=>$client->id ?? 1]) }}"
                 style="text-decoration: none">
@@ -14,7 +18,7 @@
                 <div class="fw-bold">{{ $client->name ?? 'Nom' }}</div>
             </a>
             <div class="col-auto">
-                <button class="btn btn-light btn-icon" wire:click="edit('{{ $client->id }}')"><i class="ti ti-edit"></i></button>
+                <button class="btn btn-light btn-icon" wire:click="edit()"><i class="ti ti-edit"></i></button>
             </div>
         </div>
     </div>

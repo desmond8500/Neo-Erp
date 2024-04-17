@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\ClientForm;
 use App\Models\Client;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ClientsPage extends Component
@@ -14,6 +15,7 @@ class ClientsPage extends Component
     public $search;
     public ClientForm $clientForm;
 
+    #[On('get-clients')]
     public function render()
     {
         return view('livewire.clients-page',[
@@ -42,6 +44,7 @@ class ClientsPage extends Component
         $this->dispatch('close-editClient');
         $this->render();
     }
+
     function delete()
     {
         $client = Client::find($this->selected->id);

@@ -11,9 +11,13 @@ class Projet extends Model
     use HasFactory;
 
     protected $fillable = [
+        'client_id',
         'name',
         'description',
         'status',
+        'start_date',
+        'end_date',
+        'favorite',
     ];
 
     public function taches(): HasMany

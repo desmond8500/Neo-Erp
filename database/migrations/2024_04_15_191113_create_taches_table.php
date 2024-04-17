@@ -18,10 +18,9 @@ return new class extends Migration
             $table->integer('progression_id')->constrained();
             $table->string('titre');
             $table->text('description')->nullable();
-            $table->string('progression');
-            $table->string('priorite');
-            $table->date('debut');
-            $table->date('fin');
+            $table->date('debut')->nullable();
+            $table->date('echeance')->nullable();
+            $table->date('fin')->nullable();
             $table->boolean('statut')->default(true);
             $table->timestamps();
         });

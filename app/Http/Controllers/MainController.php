@@ -23,4 +23,22 @@ class MainController extends Controller
         $file->storeAs("public/$dir", $name);
         return "storage/$dir/$name";
     }
+
+    public static function progression(){
+        return (object) array(
+            1 => 'Non Démarrée',
+            2 => 'En Cours',
+            3 => 'Terminée',
+            4 => 'En Attente',
+            5 => 'En Retard',
+        );
+    }
+
+    public static function priorite(){
+        return (object) array(
+            1 => 'Faible',
+            2 => 'Moyenne',
+            3 => 'Haute',
+        );
+    }
 }

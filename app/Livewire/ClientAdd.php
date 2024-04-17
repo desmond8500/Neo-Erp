@@ -20,5 +20,6 @@ class ClientAdd extends Component
     {
         $this->clientForm->store();
         $this->dispatch('close-addClient');
+        $this->dispatch('get-clients');
     }
 }

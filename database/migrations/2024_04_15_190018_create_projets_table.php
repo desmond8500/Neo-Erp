@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('statut')->default(true);
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->boolean('favorite')->default(false);
             $table->timestamps();
         });
     }
