@@ -8,6 +8,7 @@
             <div class="col-md-12">
                 @livewire('resume-suivi')
             </div>
+            
         @endauth
     </div>
 </div>

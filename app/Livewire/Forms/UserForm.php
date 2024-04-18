@@ -12,20 +12,22 @@ use Livewire\Form;
 class UserForm extends Form
 {
     #[Rule('required')]
-    public $firstname;
+    public $prenom;
     #[Rule('required')]
-    public $lastname;
+    public $nom;
     #[Rule('required|email|unique:App\Models\User,email')]
     public $email;
     #[Rule('required')]
     public $password;
+    #[Rule('required')]
+    public $fonction;
     #[Rule('required|same:password')]
     public $password_confirmation;
 
     function store()
     {
-        $this->firstname = ucfirst($this->firstname);
-        $this->lastname = ucfirst($this->lastname);
+        $this->prenom = ucfirst($this->prenom);
+        $this->nom = ucfirst($this->nom);
         User::create($this->all());
     }
 
