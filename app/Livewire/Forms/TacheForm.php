@@ -30,8 +30,8 @@ class TacheForm extends Form
         Tache::create($this->all());
     }
 
-    function set($model_id){
-        $this->tache = Tache::find($model_id);
+    function set($tache_id){
+        $this->tache = Tache::find($tache_id);
 
         $this->projet_id = $this->tache->projet_id;
         $this->priorite_id = $this->tache->priorite_id;

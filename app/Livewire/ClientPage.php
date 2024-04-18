@@ -52,14 +52,13 @@ class ClientPage extends Component
     public $selected , $taches;
 
     public function select_project($projet_id){
-        $this->selected = Projet::find($projet_id);
+        $this->selected = $projet_id;
+        // $this->selected = Projet::find($projet_id);
         $this->taches = Tache::where('projet_id', $projet_id)->get();
     }
 
     function projet_edit($projet_id)
     {
-        $this->selected = Projet::find($projet_id);
-
         $this->projetForm->set($projet_id);
         $this->dispatch('open-editProjet');
     }

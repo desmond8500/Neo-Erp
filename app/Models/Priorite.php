@@ -10,6 +10,7 @@ class Priorite extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'color',
     ];
 }

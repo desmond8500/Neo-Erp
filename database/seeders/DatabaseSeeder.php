@@ -26,15 +26,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Progression
-        Progression::create(['name'=> 'Non Démarrée']);
-        Progression::create(['name'=> 'En Cours']);
-        Progression::create(['name'=> 'Terminée']);
-        Progression::create(['name'=> 'En Attente']);
-        Progression::create(['name'=> 'En Retard']);
+        Progression::create(['name'=> 'Non Démarrée', 'color'=>'blue']);
+        Progression::create(['name'=> 'En Cours', 'color'=>'orange']);
+        Progression::create(['name'=> 'Terminée', 'color'=>'green']);
+        Progression::create(['name'=> 'En Attente', 'color'=>'grey']);
+        Progression::create(['name'=> 'En Retard', 'color'=>'red']);
 
         // Priorite
-        Priorite::create(['name'=>'Faible']);
-        Priorite::create(['name'=> 'Moyenne']);
-        Priorite::create(['name'=> 'Haute']);
+        Priorite::create(['name'=>'Faible', 'color'=>'blue']);
+        Priorite::create(['name'=> 'Moyenne', 'color'=>'orange']);
+        Priorite::create(['name'=> 'Haute', 'color'=>'red']);
     }
 }

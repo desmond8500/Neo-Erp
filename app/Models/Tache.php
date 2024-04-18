@@ -24,6 +24,11 @@ class Tache extends Model
         'status',
     ];
 
+    public function projet(): BelongsTo
+    {
+        return $this->belongsTo(Projet::class);
+    }
+
     public function taches(): HasMany
     {
         return $this->hasMany(Tache::class);
