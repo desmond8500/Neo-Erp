@@ -38,14 +38,13 @@
 <div class="col-md-6 mb-3">
     <label class="form-label">Confirmation de mot de passe</label>
     <div class="input-group input-group-flat">
-        <input type="{{ $formtype ? 'password' : " text" }}" class="form-control"
-            wire:model="user_form.password_confirmation" placeholder="Confirmation de mot de passe">
+        <input type="{{ $formtype ? 'password' : " text" }}" class="form-control" wire:model="user_form.password_confirmation" placeholder="Confirmation de mot de passe">
         <span class="input-group-text">
             <a href="#" class="input-group-link" title="Afficher le mot de passe" wire:click="$toggle('formtype')">
                 @if ($formtype)
-                <i class="ti ti-eye"></i>
+                    <i class="ti ti-eye"></i>
                 @else
-                <i class="ti ti-eye-off"></i>
+                    <i class="ti ti-eye-off"></i>
                 @endif
             </a>
         </span>

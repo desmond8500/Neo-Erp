@@ -9,9 +9,11 @@ use App\Models\Projet;
 use App\Models\Tache;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ResumeSuivi extends Component
 {
+    use WithPagination;
     public $projet_id;
     public TacheForm $tache;
 

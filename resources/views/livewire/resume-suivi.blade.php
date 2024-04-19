@@ -57,6 +57,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer">
+            {{ $taches->links() }}
+        </div>
 
     </div>
     @component('components.modal', ["id"=>'editTache', 'title' => 'Editer une tache'])
