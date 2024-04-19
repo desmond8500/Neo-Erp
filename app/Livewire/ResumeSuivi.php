@@ -29,9 +29,9 @@ class ResumeSuivi extends Component
     public function render()
     {
         if ($this->projet_id) {
-            $taches = Tache::where('projet_id', $this->projet_id)->paginate(3);
+            $taches = Tache::where('projet_id', $this->projet_id)->paginate(6);
         } else {
-            $taches = Tache::orderBy('projet_id')->paginate(3);
+            $taches = Tache::orderBy('projet_id')->paginate(6);
         }
 
         return view('livewire.resume-suivi',[

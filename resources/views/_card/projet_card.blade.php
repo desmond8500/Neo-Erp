@@ -7,15 +7,20 @@
                 <img class="avatar" src="{{ asset('img/avatar/project.png')  }}" alt="A">
             @endisset
         </div>
-        <div class="col" type="button" wire:click="select_project('{{ $projet->id }}')" style="text-decoration: none">
+        {{-- Hidden only on xs --}}
+        <div class="col d-none d-sm-block" type="button" wire:click="select_project('{{ $projet->id }}')" style="text-decoration: none">
             <div class="fw-bold">{{ $projet->name }}</div>
         </div>
+
         {{-- <a class="col-auto" href="{{ route('projet',['projet_id'=> $projet->id]) }}">
             <img class="avatar " src="{{ asset($projet->client->logo ?? 'img/avatar/project.png')  }}" alt="A">
-        </a>
-        <a class="col" href="{{ route('projet',['projet_id'=> $projet->id]) }}" style="text-decoration: none">
-            <div class="fw-bold">{{ $projet->name }}</div>
         </a> --}}
+
+        {{-- Visible only on xs --}}
+        <a class="col d-block d-sm-none" href="{{ route('projet',['projet_id'=> $projet->id]) }}" style="text-decoration: none">
+            <div class="fw-bold">{{ $projet->name }}</div>
+        </a>
+
         <div class="col-auto">
             <button class="btn btn-primary btn-icon" wire:click="projet_edit('{{ $projet->id }}')">
                 <i class="ti ti-edit"></i>
