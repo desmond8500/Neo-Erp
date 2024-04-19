@@ -26,6 +26,7 @@ class UserForm extends Form
 
     function store()
     {
+        $this->validate();
         $this->prenom = ucfirst($this->prenom);
         $this->nom = ucfirst($this->nom);
         User::create($this->all());

@@ -25,8 +25,6 @@ class Navbar extends Component
 
     function register()
     {
-        // $this->validate();
-
         $this->user_form->store();
 
         $this->dispatch('close-register');

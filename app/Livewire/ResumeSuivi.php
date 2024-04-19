@@ -14,6 +14,10 @@ use Livewire\WithPagination;
 class ResumeSuivi extends Component
 {
     use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+    public $search ='';
+
     public $projet_id;
     public TacheForm $tache;
 
@@ -25,9 +29,9 @@ class ResumeSuivi extends Component
     public function render()
     {
         if ($this->projet_id) {
-            $taches = Tache::where('projet_id', $this->projet_id)->paginate(6);
+            $taches = Tache::where('projet_id', $this->projet_id)->paginate(3);
         } else {
-            $taches = Tache::orderBy('projet_id')->paginate(6);
+            $taches = Tache::orderBy('projet_id')->paginate(3);
         }
 
         return view('livewire.resume-suivi',[
@@ -49,6 +53,11 @@ class ResumeSuivi extends Component
     }
 
     function delete(){
+        $this->tache->delete();
+        $this->dispatch('close-editTache');
+    }
+
+    function details($tache_id){
         $this->tache->delete();
         $this->dispatch('close-editTache');
     }
