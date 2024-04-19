@@ -18,6 +18,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Planning de vérification</div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" disabled>Editer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @else
 
         <div class="card">

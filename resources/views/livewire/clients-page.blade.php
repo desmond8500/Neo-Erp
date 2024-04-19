@@ -1,7 +1,10 @@
 <div>
     <div>
         @component('components.page-header', ['title'=>'Clients', 'breadcrumbs'=>$breadcrumbs])
+        <div class="d-flex">
+            <input type="text" class="form-control" wire:model.live="search" placeholder="Rechercher">
             @livewire('client-add')
+        </div>
         @endcomponent
     </div>
 

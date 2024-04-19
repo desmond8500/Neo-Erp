@@ -1,12 +1,10 @@
 <div>
     <div class="d-flex">
-        {{-- <input type="text" class="form-control" wire:model.live="search" placeholder="Rechercher"> --}}
-
-        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addClient">
+        <button type="button" class="btn btn-primary mx-1" wire:click="$dispatch('open-addClient')">
             <i class="ti ti-plus me-2"></i> Client
         </button>
-
     </div>
+
     @component('components.modal', ["id"=>'addClient', 'title'=>'Ajouter un client'])
         <form class="row" wire:submit="store">
             @include('_form.client_form')
