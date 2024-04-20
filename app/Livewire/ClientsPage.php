@@ -13,6 +13,7 @@ class ClientsPage extends Component
         array("name" => "Clients", "route" => "clients"),
     );
     public $search;
+    public $message;
     public ClientForm $clientForm;
 
     #[On('get-clients')]
@@ -29,31 +30,31 @@ class ClientsPage extends Component
         return redirect()->route('projets', ['client_id' => $client_id]);
     }
 
-    public $selected;
-
     function edit($client_id)
     {
-        $this->selected = Client::find($client_id);;
         $this->clientForm->set($client_id);
         $this->dispatch('open-editClient');
     }
 
     function update()
     {
-        $this->clientForm->update($this->selected);
+        $this->clientForm->update();
         $this->dispatch('close-editClient');
         $this->render();
     }
 
-    function delete()
+    function delete($client_id)
     {
-        $client = Client::find($this->selected->id);
+        $this->clientForm->set($client_id);
+        $client = Client::find($client_id);
 
         if ($client->projets->count()) {
-            // $this->error_message = 'Ce client a des projets, il faut les supprimer avant';
+            $this->message = 'Ce client a des projets, il faut les supprimer avant';
+            $this->dispatch('open-infoModal');
         } else {
-            $this->selected->delete();
+            $this->clientForm->delete();
             $this->dispatch('close-editClient');
+            $this->dispatch('get-clients');
         }
     }
 }

@@ -44,14 +44,22 @@
             @include('_form.client_form')
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" wire:click="delete()">
-                    <i class="ti ti-trash"></i>
-                </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 <button type="submit" class="btn btn-primary">Valider</button>
             </div>
         </form>
+        <button type="button" class="btn btn-danger" wire:click="delete()">
+            <i class="ti ti-trash"></i> Supprimer
+        </button>
         <script> window.addEventListener('open-editClient', event => { $('#editClient').modal('show'); }) </script>
         <script> window.addEventListener('close-editClient', event => { $('#editClient').modal('hide'); }) </script>
+    @endcomponent
+
+    @component('components.info-modal', ["id"=>'infoModal', 'title'=> 'Information', 'type'=>'danger'])
+
+        {!! nl2br($message ?? 'Description') !!}
+
+        <script> window.addEventListener('open-infoModal', event => { $('#infoModal').modal('show'); }) </script>
+        <script> window.addEventListener('close-infoModal', event => { $('#infoModal').modal('hide'); }) </script>
     @endcomponent
 </div>

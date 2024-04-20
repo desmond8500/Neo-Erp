@@ -20,13 +20,21 @@ class ClientForm extends Form
     public $type = false;
     public $adresse;
 
+    function fix()
+    {
+        $this->name = ucfirst($this->name);
+        $this->description = ucfirst($this->description);
+    }
+
     function store(){
+        $this->fix();
         $client = Client::create($this->all());
 
         if ($this->logo) {
             $client->logo = MainController::storeImage("clients/$client->id/logo", $this->logo);
             $client->save();
         }
+        $this->reset('name', 'description', 'adresse');
     }
 
     function set($model_id){
@@ -47,9 +55,9 @@ class ClientForm extends Form
         //     $this->client->save();
         // }
 
+        $this->fix();
+
         $this->client->update($this->all());
-
-
     }
 
     function delete(){

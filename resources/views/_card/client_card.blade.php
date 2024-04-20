@@ -1,5 +1,9 @@
 <div class="card p-1 bg-light rounded  border-primary">
-    <div class="bg-primary p-2 rounded">
+    @if ($client->type)
+        <div class="bg-teal p-2 rounded">
+    @else
+        <div class="bg-primary p-2 rounded">
+    @endif
         <div class="row ">
             <a class="col-auto cursor-pointer" href="{{ route('client', ['client_id'=>$client->id ?? 1]) }}">
                 @isset ($client->logo)
@@ -18,7 +22,18 @@
                 <div class="fw-bold">{{ $client->name ?? 'Nom' }}</div>
             </a>
             <div class="col-auto">
-                <button class="btn btn-light btn-icon" wire:click="edit()"><i class="ti ti-edit"></i></button>
+                {{-- <button class="btn btn-light btn-icon" wire:click="edit('{{ $client->id }}')"><i class="ti ti-edit"></i></button> --}}
+                <div class="dropdown open">
+                    <button class="btn btn-light btn-icon dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                        <button class="dropdown-item" wire:click="edit('{{ $client->id }}')">Editer</button>
+                        <button class="dropdown-item text-danger" wire:click="delete('{{ $client->id }}')">Supprimer</button>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
