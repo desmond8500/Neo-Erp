@@ -33,7 +33,7 @@ class TacheAdd extends Component
         $this->tache->projet_id = $this->projet->id;
 
         $this->tache->store();
-        $this->dispatch('close-addTache');
+        $this->dispatch('close-addTask');
         $this->dispatch('get-tasks');
     }
 }

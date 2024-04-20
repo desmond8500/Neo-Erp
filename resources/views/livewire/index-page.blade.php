@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Planning Hobdomadaire</div>
+                        <div class="card-title">Planning Hebdomadaire</div>
                         <div class="card-actions">
                             <button class="btn btn-primary" disabled>Editer</button>
                         </div>

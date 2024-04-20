@@ -7,21 +7,8 @@
                 <img class="avatar" src="{{ asset('img/avatar/project.png')  }}" alt="A">
             @endisset
         </div>
-        {{-- Hidden only on xs --}}
-        <div class="col d-none d-sm-block" type="button" wire:click="select_project('{{ $projet->id }}')" style="text-decoration: none">
-            <div class="fw-bold">{{ $projet->name }}</div>
-            <div class="d-flex justify-content-between">
-                <div class="fw-bold ">Taches :</div>
-                <div class="badge ">{{ $projet->taches->count() }}</div>
-            </div>
-        </div>
 
-        {{-- <a class="col-auto" href="{{ route('projet',['projet_id'=> $projet->id]) }}">
-            <img class="avatar " src="{{ asset($projet->client->logo ?? 'img/avatar/project.png')  }}" alt="A">
-        </a> --}}
-
-        {{-- Visible only on xs --}}
-        <a class="col d-block d-sm-none" href="{{ route('projet',['projet_id'=> $projet->id]) }}" style="text-decoration: none">
+        <a class="col" href="{{ route('projet',['projet_id'=> $projet->id]) }}" style="text-decoration: none">
             <div class="fw-bold">{{ $projet->name }}</div>
             <div class="d-flex justify-content-between">
                 <div class="fw-bold text-muted">Taches :</div>
@@ -30,9 +17,20 @@
         </a>
 
         <div class="col-auto">
-            <button class="btn btn-primary btn-icon" wire:click="projet_edit('{{ $projet->id }}')">
+            <div class="dropdown open">
+                <button class="btn btn-secondary btn-icon dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                </button>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <button class="dropdown-item" wire:click="projet_edit('{{ $projet->id }}')">Editer</button>
+                    <button class="dropdown-item text-danger disabled" >Supprimer
+                    </button>
+                </div>
+            </div>
+
+
+            {{-- <button class="btn btn-primary btn-icon" wire:click="projet_edit('{{ $projet->id }}')">
                 <i class="ti ti-edit"></i>
-            </button>
+            </button> --}}
         </div>
         <div class="col-md-12">
             <div class="text-muted mt-1">{{ nl2br($projet->description) }}</div>

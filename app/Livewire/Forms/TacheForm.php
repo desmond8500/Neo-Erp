@@ -28,6 +28,7 @@ class TacheForm extends Form
     function store(){
         $this->validate();
         Tache::create($this->all());
+        $this->reset('titre', 'description', 'debut', 'fin', 'echeance', 'statut');
     }
 
     function set($tache_id){

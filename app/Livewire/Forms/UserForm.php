@@ -11,6 +11,7 @@ use Livewire\Form;
 
 class UserForm extends Form
 {
+    public User $user;
     #[Rule('required')]
     public $prenom;
     #[Rule('required')]
@@ -24,12 +25,34 @@ class UserForm extends Form
     #[Rule('required|same:password')]
     public $password_confirmation;
 
+    function set(){
+        $this->user = auth()->user();
+
+        $this->prenom = $this->user->prenom;
+        $this->nom = $this->user->nom;
+        $this->email = $this->user->email;
+        $this->fonction = $this->user->fonction;
+    }
+
+    function fix(){
+        $this->prenom = ;
+    }
+
     function store()
     {
-        $this->validate();
         $this->prenom = ucfirst($this->prenom);
         $this->nom = ucfirst($this->nom);
         User::create($this->all());
+    }
+
+    function update()
+    {
+        // $this->validate();
+        $this->user->update([
+            'prenom' => $this->prenom,
+            'nom' => $this->nom,
+            'email' => $this->email,
+        ]);
     }
 
     function login($email, $password)

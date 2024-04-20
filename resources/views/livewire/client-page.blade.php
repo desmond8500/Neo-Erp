@@ -8,7 +8,7 @@
             <div class="mb-3">
                 @include('_card.client_card',['client'=>$client])
             </div>
-            <div>
+            {{-- <div>
                 @forelse ($projets as $projet)
                     <div class="mb-1">
                         @include('_card.projet_card',['projet'=> $projet])
@@ -18,13 +18,25 @@
 
                     @endcomponent
                 @endforelse
-            </div>
+            </div> --}}
         </div>
         <div class="col-md-9">
-
-            @if ($selected)
+            {{-- @if ($selected)
                 @livewire('resume-suivi',['projet_id'=> $selected], key($selected))
-            @endif
+            @endif --}}
+            <div class="row g-2">
+                @forelse ($projets as $projet)
+                    <div class="col-md-3">
+                        @include('_card.projet_card',['projet'=> $projet])
+                    </div>
+                @empty
+                    @component('components.no-result')
+
+                    @endcomponent
+                @endforelse
+            </div>
+
+
         </div>
 
     </div>
