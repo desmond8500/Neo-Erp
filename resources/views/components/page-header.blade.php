@@ -17,7 +17,7 @@
                 </ol>
             </div>
             <h2 class="page-title">
-                <span class="text-truncate">{{ $title ?? 'Title' }}</span>
+                <span class="text-truncate mb-1">{{ $title ?? 'Title' }}</span>
             </h2>
         </div>
         <div class="col-md-auto col-xs-12">

@@ -23,7 +23,7 @@
 
 <div class="w-100"></div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-3 mb-3">
     <label class="form-label">Type de client</label>
     <select class="form-control" wire:model="clientForm.type">
         <option value="false">Entreprise</option>
@@ -31,7 +31,7 @@
     </select>
 </div>
 
-<div class="col-md-8 mb-3">
+<div class="col-md-9 mb-3">
     <label class="form-label">Adresse</label>
     <input type="text" class="form-control" wire:model="clientForm.adresse" placeholder="Adresse du client">
     @error('clientForm.adresse') <span class="text-danger">{{ $message }}</span> @enderror

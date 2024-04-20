@@ -58,6 +58,7 @@ class ClientForm extends Form
         $this->fix();
 
         $this->client->update($this->all());
+        $this->reset('name', 'description', 'adresse');
     }
 
     function delete(){

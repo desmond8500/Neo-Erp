@@ -49,7 +49,7 @@ class ClientPage extends Component
     }
 
     // Projet
-    public $selected , $taches;
+    public $selected , $taches, $message;
 
     public function select_project($projet_id){
         $this->selected = $projet_id;
@@ -71,8 +71,18 @@ class ClientPage extends Component
 
     function projet_delete()
     {
-        $this->selected->delete();
-        $this->dispatch('close-editProjet');
+        $projet = Projet::find($this->selected);
+
+        // if ($projet->taches()->count()) {
+        //     $this->message = 'Ce client a des projets, il faut les supprimer avant';
+        //     $this->dispatch('open-infoModal');
+        // } else {
+            $this->projetForm->delete();
+            $this->dispatch('close-editProjet');
+            $this->dispatch('get-clients');
+        // }
+
+
     }
 
     function projet_toggleFavorite()

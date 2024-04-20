@@ -20,6 +20,10 @@ class ProjetForm extends Form
     public $end_date;
     public $favorite = 0;
 
+    function fix(){
+        $this->name = ucfirst($this->name);
+        $this->description = ucfirst($this->description);
+    }
 
     function set($projet_id)
     {
@@ -36,22 +40,21 @@ class ProjetForm extends Form
     function store()
     {
         $this->validate();
-        $projet = Projet::create($this->all());
-        $projet->name = ucfirst($projet->name);
-        $projet->description = ucfirst($projet->description);
-        $projet->save();
+        $this->fix();
+        Projet::create($this->all());
+        $this->reset('name', 'description','start_date', 'end_date');
     }
 
     function update()
     {
+        $this->fix();
         $this->projet->update($this->all());
-        $this->projet->name = ucfirst($this->projet->name);
-        $this->projet->description = ucfirst($this->projet->description);
-        $this->projet->save();
+        $this->reset('name', 'description', 'start_date', 'end_date');
     }
 
     function delete()
     {
+        $this->projet->delete();
     }
 
     function favorite()

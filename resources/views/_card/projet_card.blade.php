@@ -10,6 +10,10 @@
         {{-- Hidden only on xs --}}
         <div class="col d-none d-sm-block" type="button" wire:click="select_project('{{ $projet->id }}')" style="text-decoration: none">
             <div class="fw-bold">{{ $projet->name }}</div>
+            <div class="d-flex justify-content-between">
+                <div class="fw-bold ">Taches :</div>
+                <div class="badge ">{{ $projet->taches->count() }}</div>
+            </div>
         </div>
 
         {{-- <a class="col-auto" href="{{ route('projet',['projet_id'=> $projet->id]) }}">
@@ -19,6 +23,10 @@
         {{-- Visible only on xs --}}
         <a class="col d-block d-sm-none" href="{{ route('projet',['projet_id'=> $projet->id]) }}" style="text-decoration: none">
             <div class="fw-bold">{{ $projet->name }}</div>
+            <div class="d-flex justify-content-between">
+                <div class="fw-bold text-muted">Taches :</div>
+                <div class="badge ">{{ $projet->taches->count() }}</div>
+            </div>
         </a>
 
         <div class="col-auto">
