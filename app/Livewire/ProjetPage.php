@@ -17,7 +17,6 @@ class ProjetPage extends Component
         $this->projet = Projet::find($projet_id);
     }
 
-
     public function render()
     {
         $breadcrumbs = array(

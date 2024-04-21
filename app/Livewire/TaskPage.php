@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\TacheForm;
+use App\Models\Priorite;
+use App\Models\Progression;
 use App\Models\Tache;
 use Livewire\Component;
 
 class TaskPage extends Component
 {
     public $tache;
+    public TacheForm $tache_form;
 
     function mount($tache_id){
         $this->tache = Tache::find($tache_id);
@@ -21,9 +25,32 @@ class TaskPage extends Component
             array("name" => $this->tache->projet->name, "route" => route("projet", ['projet_id' => $this->tache->projet->id])),
             array("name" => "Tache", "route" => route("tache", ['tache_id' => $this->tache->id])),
         );
+
         return view('livewire.task-page',[
             'breadcrumbs' => $breadcrumbs,
+            'priorites' => Priorite::all(),
+            'progressions' => Progression::all(),
 
         ]);
+    }
+
+    // Tache
+    function edit_tache($tache_id)
+    {
+        $this->tache_form->set($tache_id);
+        $this->dispatch('open-editTache');
+    }
+
+    function update_tache()
+    {
+        $this->tache_form->update();
+        $this->tache = Tache::find($this->tache->id);
+        $this->dispatch('close-editTache');
+    }
+
+    function delete_tache()
+    {
+        $this->tache_form->delete();
+        $this->dispatch('close-editTache');
     }
 }

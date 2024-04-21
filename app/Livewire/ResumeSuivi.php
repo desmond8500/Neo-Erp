@@ -19,7 +19,7 @@ class ResumeSuivi extends Component
     public $search ='';
 
     public $projet_id;
-    public TacheForm $tache;
+    public TacheForm $tache_form;
 
     public function mount($projet_id=null){
         $this->projet_id = $projet_id;
@@ -43,22 +43,22 @@ class ResumeSuivi extends Component
     }
 
     function edit($tache_id){
-        $this->tache->set($tache_id);
+        $this->tache_form->set($tache_id);
         $this->dispatch('open-editTache');
     }
 
     function update(){
-        $this->tache->update();
+        $this->tache_form->update();
         $this->dispatch('close-editTache');
     }
 
     function delete(){
-        $this->tache->delete();
+        $this->tache_form->delete();
         $this->dispatch('close-editTache');
     }
 
     function details($tache_id){
-        $this->tache->delete();
+        $this->tache_form->delete();
         $this->dispatch('close-editTache');
     }
 }

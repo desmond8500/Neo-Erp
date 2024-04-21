@@ -35,7 +35,7 @@
                             <td scope="row" class="fw-bold">{{ $key+1 }}</td>
                             <td>
                                 <div class="text-primary fw-bold"><a href="{{ route('client',['client_id'=>$tache->projet->client->id]) }}">{{ $tache->projet->client->name }}</a> / <a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a></div>
-                                <div>{{ $tache->titre }}</div>
+                                <a href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
                             </td>
                             <td class="text-center">
                                 <div class="badge bg-{{ $tache->progression->color }}">{{ $tache->progression->name }}</div>
@@ -106,7 +106,7 @@
         </div>
     @else
         @component('components.no-result', )
-            <p>Aucune tache n'a encore été créée pour ce projet.</p>
+            <p>Aucune tache n'a encore été créée.</p>
             <div>
                 @isset($projet->id)
                    @livewire('tache-add',['projet_id'=>$projet->id])
