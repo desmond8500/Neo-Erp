@@ -108,7 +108,9 @@
         @component('components.no-result', )
             <p>Aucune tache n'a encore été créée pour ce projet.</p>
             <div>
-                @livewire('tache-add',['projet_id'=>$projet->id])
+                @isset($projet->id)
+                   @livewire('tache-add',['projet_id'=>$projet->id])
+                @endisset
             </div>
         @endcomponent
 
