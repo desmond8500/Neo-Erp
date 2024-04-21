@@ -35,7 +35,9 @@ class UserForm extends Form
     }
 
     function fix(){
-        $this->prenom = ;
+        $this->prenom = ucfirst($this->prenom);
+        $this->nom = ucfirst($this->nom);
+        $this->fonction = ucfirst($this->fonction);
     }
 
     function store()
