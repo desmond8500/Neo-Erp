@@ -28,7 +28,8 @@
             </div>
         </div>
         <div class="col-md-9">
-            @livewire('resume-suivi',['projet_id'=> $projet->id])
+            @livewire('resume-card',['projet_id'=> $projet->id])
+            {{-- @livewire('resume-suivi',['projet_id'=> $projet->id]) --}}
         </div>
     </div>
 

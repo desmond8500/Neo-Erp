@@ -34,8 +34,13 @@
                         <tr class="">
                             <td scope="row" class="fw-bold">{{ $key+1 }}</td>
                             <td>
-                                <div class="text-primary fw-bold"><a href="{{ route('client',['client_id'=>$tache->projet->client->id]) }}">{{ $tache->projet->client->name }}</a> / <a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a></div>
-                                <a href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
+                                <div class="text-primary fw-bold status" style="font-size:13px">
+                                    <a href="{{ route('client',['client_id'=>$tache->projet->client->id]) }}">{{ $tache->projet->client->name }}</a> /
+                                    <a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a>
+                                </div>
+                                <div>
+                                    <a class="text-dark" href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
+                                </div>
                             </td>
                             <td class="text-center">
                                 <div class="badge bg-{{ $tache->progression->color }}">{{ $tache->progression->name }}</div>

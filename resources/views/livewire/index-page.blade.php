@@ -5,11 +5,12 @@
 
     <div class="row g-2">
         @auth
-            <div class="col-md-12">
-                @livewire('resume-suivi')
+            <div class="col-md-8">
+                @livewire('resume-card')
+                {{-- @livewire('resume-suivi') --}}
             </div>
-            <div class="col-md-12">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card mb-2">
                     <div class="card-header">
                         <div class="card-title">Planning Hebdomadaire</div>
                         <div class="card-actions">
@@ -17,9 +18,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card">
+
+                <div class="card mb-2">
                     <div class="card-header">
                         <div class="card-title">Planning de vérification</div>
                         <div class="card-actions">

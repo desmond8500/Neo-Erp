@@ -26,7 +26,7 @@
             @endif --}}
             <div class="row g-2">
                 @forelse ($projets as $projet)
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         @include('_card.projet_card',['projet'=> $projet])
                     </div>
                 @empty

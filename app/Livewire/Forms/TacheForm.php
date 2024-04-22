@@ -25,8 +25,14 @@ class TacheForm extends Form
     public $statut;
     public $echeance;
 
+    function fix(){
+        $this->titre = ucfirst($this->titre);
+        $this->description = ucfirst($this->description);
+    }
+
     function store(){
         $this->validate();
+        $this->fix();
         Tache::create($this->all());
         $this->reset('titre', 'description', 'debut', 'fin', 'echeance', 'statut');
     }
@@ -46,6 +52,8 @@ class TacheForm extends Form
     }
 
     function update(){
+        $this->validate();
+        $this->fix();
         $this->tache->update($this->all());
     }
 
