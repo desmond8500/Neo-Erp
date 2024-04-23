@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->integer('tache_id')->constrained();
+            $table->string('name');
+            $table->string('link')->nullable();
+            $table->string('folder')->nullable();
             $table->timestamps();
         });
     }
