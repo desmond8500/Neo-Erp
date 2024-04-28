@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-md-auto mb-3">
+    <div class="col-2 mb-3">
         <label class="form-label">Projet_id</label>
-        <input type="text" class="form-control" wire:model="tache_form.projet_id" placeholder="projet_id">
+        <input type="text" class="form-control" wire:model="tache_form.projet_id" placeholder="projet_id" disabled>
         @error('tache_form.projet_id') <span class='text-danger'>{{ $message }}</span> @enderror
     </div>
-    <div class="col-md mb-3">
+    <div class="col-md-10 mb-3">
         <label class="form-label">Nom de la tache</label>
         <input type="text" class="form-control" wire:model="tache_form.titre" placeholder="Titre">
         @error('tache_form.titre') <span class='text-danger'>{{ $message }}</span> @enderror

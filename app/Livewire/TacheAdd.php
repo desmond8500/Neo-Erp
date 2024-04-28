@@ -17,7 +17,7 @@ class TacheAdd extends Component
 
     public function mount($projet_id){
         $this->projet = Projet::find($projet_id);
-
+        $this->tache_form->projet_id = $this->projet->id;
     }
 
     public function render()
@@ -30,7 +30,7 @@ class TacheAdd extends Component
 
     function store()
     {
-        $this->tache_form->projet_id = $this->projet->id;
+
 
         $this->tache_form->store();
         $this->dispatch('close-addTask');
