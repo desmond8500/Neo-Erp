@@ -60,20 +60,72 @@
         </div>
         <div class="col-md-8">
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Sous tache</div>
-                    <div class="card-actions">
-                        <button class="btn btn-primary" disabled> Ajouter une sous tache</button>
+            <div class="row g-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Sous tache</div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" disabled> Ajouter une sous tache</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Document</div>
+                            <div class="card-actions">
+                                @livewire('document-add', ['tache_id' => $tache->id])
+                            </div>
+                        </div>
+                        <div class="card-body">
 
+                            @foreach ($documents as $document)
+                                <div>
+                                    @if ($document->link)
+                                        <a href="{{ $document->link }}" target="_blank">{{ $document->name }}</a>
+                                    @else
+                                        {{ $document->name }}
+                                    @endif
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Document</div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" disabled> Ajouter une sous tache</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
 
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
 
         </div>
     </div>
@@ -91,6 +143,20 @@
         </form>
         <script> window.addEventListener('open-editTache', event => { $('#editTache').modal('show'); }) </script>
         <script> window.addEventListener('close-editTache', event => { $('#editTache').modal('hide'); }) </script>
+    @endcomponent
+
+    @component('components.modal', ["id"=>'editLink', 'title' => 'editer un document'])
+        <form class="row" wire:submit="update_document">
+            @include('_form.tache_form')
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" wire:click='delete()'
+                    wire:confirm="Etes vous sur de vouloir supprimer cette tache ?"><i class="ti ti-trash"></i></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+        <script> window.addEventListener('open-editLink', event => { $('#editLink').modal('show'); }) </script>
+        <script> window.addEventListener('close-editLink', event => { $('#editLink').modal('hide'); }) </script>
     @endcomponent
 
 

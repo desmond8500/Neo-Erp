@@ -23,8 +23,8 @@ class DocumentForm extends Form
     }
 
     function store(){
-        $this->validate();
-        $this->document->create($this->all());
+        // $this->validate();
+        Document::create($this->all());
     }
 
     function set($document_id){

@@ -2,10 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\DocumentForm;
 use App\Livewire\Forms\TacheForm;
+use App\Models\Document;
 use App\Models\Priorite;
 use App\Models\Progression;
 use App\Models\Tache;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class TaskPage extends Component
@@ -30,6 +33,7 @@ class TaskPage extends Component
             'breadcrumbs' => $breadcrumbs,
             'priorites' => Priorite::all(),
             'progressions' => Progression::all(),
+            'documents' => $this->getDocuments(),
 
         ]);
     }
@@ -52,5 +56,27 @@ class TaskPage extends Component
     {
         $this->tache_form->delete();
         $this->dispatch('close-editTache');
+    }
+
+    // liens
+
+    public DocumentForm $document_form;
+
+    #[On('get-documents')]
+    function getDocuments(){
+        return Document::where('tache_id', $this->tache->id)->get();
+    }
+
+    function edit($id){
+        $this->document_form->set($id);
+    }
+
+    function update($id){
+        $this->document_form->update();
+        $this->dispatch('get-documents');
+    }
+
+    function delete(){
+        $this->document_form->delete();
     }
 }
