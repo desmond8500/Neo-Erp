@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class TacheAdd extends Component
 {
-    public TacheForm $tache;
+    public TacheForm $tache_form;
 
     public $projet;
 
@@ -30,9 +30,9 @@ class TacheAdd extends Component
 
     function store()
     {
-        $this->tache->projet_id = $this->projet->id;
+        $this->tache_form->projet_id = $this->projet->id;
 
-        $this->tache->store();
+        $this->tache_form->store();
         $this->dispatch('close-addTask');
         $this->dispatch('get-tasks');
     }

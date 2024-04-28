@@ -66,10 +66,10 @@
                                             <div>{{ $tache->fin ?? 'Non défini' }}</div>
                                         </div>
                                     @endif
-                                    @if ($tache->echance)
+                                    @if ($tache->echeance)
                                         <div class="d-flex justify-content-between">
                                             <div class="fw-bold">Date d'expiration : </div>
-                                            <div>{{ $tache->echance ?? 'Non défini' }}</div>
+                                            <div>{{ $tache->echeance ?? 'Non défini' }}</div>
                                         </div>
                                     @endif
                                 </div>

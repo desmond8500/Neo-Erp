@@ -1,7 +1,7 @@
 <div>
     @component('components.page-header', ['title'=>'Projet', 'breadcrumbs'=>$breadcrumbs])
+    @livewire('tache-add', ['projet_id' => $projet->id])
     @endcomponent
-
 
     <div class="row">
         <div class="col-md-3">
