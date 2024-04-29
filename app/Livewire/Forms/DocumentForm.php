@@ -34,7 +34,7 @@ class DocumentForm extends Form
         $this->tache_id = $this->document->tache_id;
         $this->name = $this->document->name;
         $this->link = $this->document->link;
-        $this->folder = $this->document->link;
+        $this->folder = $this->document->folder;
     }
 
     function update(){
