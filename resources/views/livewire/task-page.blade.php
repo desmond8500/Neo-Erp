@@ -80,31 +80,39 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Document</div>
+                            <div class="card-title">Liens</div>
                             <div class="card-actions">
                                 @livewire('document-add', ['tache_id' => $tache->id])
                             </div>
                         </div>
                         <div class="card-body">
-
-                            @foreach ($documents as $document)
-                                <div>
-                                    @if ($document->link)
-                                        <a href="{{ $document->link }}" target="_blank">{{ $document->name }}</a>
-                                    @else
-                                        {{ $document->name }}
-                                    @endif
-                                </div>
-                            @endforeach
-
-
+                            <div class="row g-2">
+                                @foreach ($documents as $document)
+                                    <div class="col-md-4">
+                                        <div class="border rounded p-1 d-flex justify-content-between align-items-center">
+                                            <div>
+                                                @if ($document->link)
+                                                    <a href="{{ $document->link }}" target="_blank">{{ $document->name }}</a>
+                                                @else
+                                                    {{ $document->name }}
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-action" wire:click="edit_link('{{ $document->id }}')">
+                                                    <i class="ti ti-edit"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                        <div class="card-footer">
+                        {{-- <div class="card-footer">
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-                <div class="col-md-12">
+                {{-- <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">Document</div>
@@ -119,17 +127,10 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
-
-
-
-
-
-
         </div>
     </div>
-
 
     @component('components.modal', ["id"=>'editTache', 'title' => 'Editer une tache'])
         <form class="row" wire:submit="update_tache">
@@ -145,9 +146,9 @@
         <script> window.addEventListener('close-editTache', event => { $('#editTache').modal('hide'); }) </script>
     @endcomponent
 
-    @component('components.modal', ["id"=>'editLink', 'title' => 'editer un document'])
-        <form class="row" wire:submit="update_document">
-            @include('_form.tache_form')
+    @component('components.modal', ["id"=>'editLink', 'title' => 'Editer un lien'])
+        <form class="row" wire:submit="update_link">
+            @include('_form.document_form')
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" wire:click='delete()'
                     wire:confirm="Etes vous sur de vouloir supprimer cette tache ?"><i class="ti ti-trash"></i></button>
@@ -158,11 +159,6 @@
         <script> window.addEventListener('open-editLink', event => { $('#editLink').modal('show'); }) </script>
         <script> window.addEventListener('close-editLink', event => { $('#editLink').modal('hide'); }) </script>
     @endcomponent
-
-
-
-
-
 
     @component('components.off-canvas',['titre'=>'Demo'])
         sfsdqf

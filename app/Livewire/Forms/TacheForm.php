@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Livrable;
 use App\Models\Tache;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
@@ -25,6 +26,8 @@ class TacheForm extends Form
     public $statut;
     public $echeance;
 
+    public $livrables;
+
     function fix(){
         $this->titre = ucfirst($this->titre);
         $this->description = ucfirst($this->description);
@@ -33,8 +36,17 @@ class TacheForm extends Form
     function store(){
         $this->validate();
         $this->fix();
-        Tache::create($this->all());
+        $tache = Tache::create($this->all());
         $this->reset('titre', 'description', 'debut', 'fin', 'echeance', 'statut');
+
+        if ($this->livrables) {
+            foreach ($this->livrables as $key => $livrable) {
+                Livrable::create([
+                    'tache_id' => $tache->id,
+                    'nom' => $livrable,
+                ]);
+            }
+        }
     }
 
     function set($tache_id){

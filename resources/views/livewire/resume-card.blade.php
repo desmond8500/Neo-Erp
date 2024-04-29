@@ -57,19 +57,19 @@
                                     @if ($tache->debut)
                                         <div class="d-flex justify-content-between">
                                             <div class="fw-bold">Date de debut : </div>
-                                            <div>{{ $tache->debut ?? 'Non défini' }}</div>
+                                            <div>{{ $carbon->create($tache->debut)->locale('fr_FR')->isoFormat('Do MMMM YYYY') ?? 'Non défini' }}</div>
                                         </div>
                                     @endif
                                     @if ($tache->fin)
                                         <div class="d-flex justify-content-between">
                                             <div class="fw-bold">Date de fin : </div>
-                                            <div>{{ $tache->fin ?? 'Non défini' }}</div>
+                                            <div>{{ $carbon->create($tache->fin)->locale('fr_FR')->isoFormat('Do MMMM YYYY') ?? 'Non défini' }}</div>
                                         </div>
                                     @endif
                                     @if ($tache->echeance)
                                         <div class="d-flex justify-content-between">
                                             <div class="fw-bold">Date d'expiration : </div>
-                                            <div>{{ $tache->echeance ?? 'Non défini' }}</div>
+                                            <div>{{ $carbon->create($tache->echeance)->locale('fr_FR')->isoFormat('Do MMMM YYYY') ?? 'Non défini' }}</div>
                                         </div>
                                     @endif
                                 </div>

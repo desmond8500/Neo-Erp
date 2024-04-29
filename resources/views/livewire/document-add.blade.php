@@ -1,7 +1,7 @@
 <div>
-    <button class='btn btn-primary' wire:click="dispatch('open-addDocument')" ><i class='ti ti-plus'></i> Document</button>
+    <button class='btn btn-primary' wire:click="dispatch('open-addDocument')" ><i class='ti ti-plus'></i> Lien </button>
 
-    @component('components.modal', ["id"=>'addDocument', 'title' => 'Ajouter un document/lien'])
+    @component('components.modal', ["id"=>'addDocument', 'title' => 'Ajouter un lien'])
         <form class="row" wire:submit="store">
             @include('_form.document_form')
 

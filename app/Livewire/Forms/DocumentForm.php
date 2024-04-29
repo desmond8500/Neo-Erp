@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Document;
+use App\Models\Livrable;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -23,18 +24,21 @@ class DocumentForm extends Form
     }
 
     function store(){
-        // $this->validate();
+        $this->validate();
         Document::create($this->all());
     }
 
     function set($document_id){
         $this->document = Document::find($document_id);
 
+        $this->tache_id = $this->document->tache_id;
         $this->name = $this->document->name;
+        $this->link = $this->document->link;
+        $this->folder = $this->document->link;
     }
 
     function update(){
-        $this->validate();
+        // $this->validate();
         $this->document->update($this->all());
     }
 

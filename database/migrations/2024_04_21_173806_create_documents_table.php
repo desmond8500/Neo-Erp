@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('tache_id')->constrained();
             $table->string('name');
-            $table->string('link')->nullable();
+            $table->text('link')->nullable();
             $table->string('folder')->nullable();
             $table->timestamps();
         });

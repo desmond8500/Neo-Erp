@@ -67,16 +67,17 @@ class TaskPage extends Component
         return Document::where('tache_id', $this->tache->id)->get();
     }
 
-    function edit($id){
+    function edit_link($id){
         $this->document_form->set($id);
+        $this->dispatch('open-editLink');
     }
 
-    function update($id){
+    function update_link(){
         $this->document_form->update();
-        $this->dispatch('get-documents');
+        $this->dispatch('close-editLink');
     }
 
-    function delete(){
+    function delete_link(){
         $this->document_form->delete();
     }
 }
