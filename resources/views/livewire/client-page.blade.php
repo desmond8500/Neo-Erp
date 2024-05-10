@@ -5,8 +5,14 @@
 
     <div class="row g-2">
         <div class="col-md-3">
-            <div class="mb-3">
+            <div class="mb-2">
                 @include('_card.client_card',['client'=>$client])
+            </div>
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="card-title fw-bold">Description</div>
+                    {!! nl2br($client->description) !!}
+                </div>
             </div>
         </div>
         <div class="col-md-9">
@@ -36,6 +42,22 @@
 
         <script> window.addEventListener('open-editProjet', event => { $('#editProjet').modal('show'); }) </script>
         <script> window.addEventListener('close-editProjet', event => { $('#editProjet').modal('hide'); }) </script>
+    @endcomponent
+
+    @component('components.modal', ["id"=>'editClient', 'title'=>'Modifier un client'])
+        <form class="row" wire:submit="update">
+            @include('_form.client_form')
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+        <button type="button" class="btn btn-danger" wire:click="delete()">
+            <i class="ti ti-trash"></i> Supprimer
+        </button>
+        <script> window.addEventListener('open-editClient', event => { $('#editClient').modal('show'); }) </script>
+        <script> window.addEventListener('close-editClient', event => { $('#editClient').modal('hide'); }) </script>
     @endcomponent
 
     @component('components.info-modal', ["id"=>'infoModal', 'title'=> 'Information', 'type'=>'danger'])

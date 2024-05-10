@@ -13,11 +13,13 @@ use Livewire\Component;
 class ClientPage extends Component
 {
     public $client;
+    public $client_id;
     public ClientForm $clientForm;
     public ProjetForm $projetForm;
 
     public function mount($client_id){
         $this->client = Client::find($client_id);
+        $this->client_id = $client_id;
     }
 
     #[On('get-projets')]
@@ -44,6 +46,7 @@ class ClientPage extends Component
     function update()
     {
         $this->clientForm->update($this->selected);
+        $this->client = Client::find($this->client_id);
         $this->dispatch('close-editClient');
         $this->render();
     }
