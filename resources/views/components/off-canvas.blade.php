@@ -1,7 +1,7 @@
 <div>
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ $id ?? 'offcanvasExample' }}"
+    <button class="btn btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ $id ?? 'offcanvasExample' }}"
         aria-controls="{{ $id ?? 'offcanvasExample' }}">
-        Button with data-bs-target
+        {{ $button ?? '  Informations' }}
     </button>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $id ?? 'offcanvasExample' }}" aria-labelledby="{{ $id ?? 'offcanvasExample' }}Label">

@@ -22,26 +22,22 @@
                 <div class="fw-bold">{{ $client->name ?? 'Nom' }}</div>
             </a>
             <div class="col-auto">
-                {{-- <button class="btn btn-light btn-icon" wire:click="edit('{{ $client->id }}')"><i class="ti ti-edit"></i></button> --}}
                 <div class="dropdown open">
                     <button class="btn btn-light btn-icon dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-
                     </button>
                     <div class="dropdown-menu" aria-labelledby="triggerId">
-                        <button class="dropdown-item" wire:click="edit('{{ $client->id }}')">Editer</button>
-                        <button class="dropdown-item text-danger" wire:click="delete('{{ $client->id }}')">Supprimer</button>
-
+                        <a class="dropdown-item"  wire:click="edit('{{ $client->id }}')">Editer</a>
+                        <a class="dropdown-item text-danger" wire:click="delete('{{ $client->id }}')">Supprimer</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="d-flex justify-content-between pt-2 pb-2">
         @isset ($client)
-        <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Projets <b class="ms-2 badge bg-primary" >{{ $client->projets->count() ?? '0' }}</b></div>
-        <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Taches en cours <b class="ms-2 badge bg-primary" >??</b></div>
+            <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Projets <b class="ms-2 badge bg-primary" >{{ $client->projets->count() ?? '0' }}</b></div>
+            <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Taches en cours <b class="ms-2 badge bg-primary" >??</b></div>
         @endisset
     </div>
 

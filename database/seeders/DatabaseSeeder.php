@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
         Priorite::create(['name'=>'Faible', 'color'=>'blue']);
         Priorite::create(['name'=> 'Moyenne', 'color'=>'orange']);
         Priorite::create(['name'=> 'Haute', 'color'=>'red']);
+
+        // Statut
     }
 }

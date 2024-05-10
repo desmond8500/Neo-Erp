@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\DocumentForm;
+use App\Livewire\Forms\SoustacheForm;
 use App\Livewire\Forms\TacheForm;
 use App\Models\Document;
 use App\Models\Priorite;
 use App\Models\Progression;
+use App\Models\Soustache;
 use App\Models\Tache;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -34,6 +36,7 @@ class TaskPage extends Component
             'priorites' => Priorite::all(),
             'progressions' => Progression::all(),
             'documents' => $this->getDocuments(),
+            'soustaches' => $this->get_soustache(),
 
         ]);
     }
@@ -79,5 +82,39 @@ class TaskPage extends Component
 
     function delete_link(){
         $this->document_form->delete();
+    }
+    // Sous tache
+
+    public $soustache;
+    public SoustacheForm $soustache_form;
+
+    function get_soustache(){
+        $this->soustache_form->tache_id = $this->tache->id;
+        $this->soustache_form->status_id = 1;
+        return Soustache::where('tache_id', $this->tache->id)->get();
+    }
+
+    function add_soustache(){
+        $this->dispatch('open-addSubTask');
+    }
+
+    function store_soustache(){
+        $this->soustache_form->store();
+        $this->dispatch('close-addSubTask');
+    }
+
+    function edit_soustache($id){
+        $this->soustache_form->set($id);
+        $this->dispatch('open-editSubTask');
+    }
+
+    function update_soustache(){
+        $this->soustache_form->update();
+        $this->dispatch('close-editSubTask');
+    }
+
+    function delete_soustache($id){
+        $this->soustache_form->set($id);
+        $this->soustache_form->delete();
     }
 }

@@ -5,9 +5,11 @@
 
     <div class="row">
         <div class="col-md-3">
-            @include('_card.projet_card',['projet'=> $projet])
+            <div class="mb-2">
+                @include('_card.projet_card',['projet'=> $projet])
+            </div>
 
-            <div class="card mt-2">
+            <div class="card mb-2">
                 <div class="card-header">
                     <div class="card-title">Informations sur le projet</div>
                 </div>

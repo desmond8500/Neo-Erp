@@ -35,9 +35,9 @@ class ClientPage extends Component
 
     // Client
 
-    function edit()
+    function edit($client_id)
     {
-        $this->clientForm->set($this->client->id);
+        $this->clientForm->set($client_id);
         $this->dispatch('open-editClient');
     }
 

@@ -1,6 +1,6 @@
 <div class="col-2 mb-3">
     <label class="form-label">Tache_id</label>
-    <input type="text" class="form-control" wire:model='document_form.tache_id' />
+    <input type="text" class="form-control" wire:model='document_form.tache_id' disabled />
     @error('document_form.tache_id') <span class="text-danger">{{ $message }}</span> @enderror
 </div>
 <div class="col-10 mb-3">

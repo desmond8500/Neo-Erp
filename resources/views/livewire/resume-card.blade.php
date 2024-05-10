@@ -2,16 +2,27 @@
     @foreach ($taches as $key => $tache)
         <div class="col-md-12">
             <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="fw-bold mt-1">
+                            <a class="text-dark fs-3" href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="card-body">
-                    <div class="row align-items-center">
+                    <div class="row ">
                         <div class="col-12 col-md">
-                            <div class="text-primary fw-bold status" style="font-size:13px">
-                                <a href="{{ route('client',['client_id'=>$tache->projet->client->id]) }}">{{ $tache->projet->client->name }}</a> /
-                                <a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a>
+                            <div class="border-bottom pb-2">
+                                <div>
+                                    <span class="fw-bold">Client : </span><a href="{{ route('client',['client_id'=>$tache->projet->client->id]) }}">{{ $tache->projet->client->name }}</a>
+                                </div>
+                                <div>
+                                    <span class="fw-bold">Projet : </span><a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a>
+                                </div>
                             </div>
-                            <div class="fw-bold mt-1">
-                                <a class="text-dark fs-3" href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
-                            </div>
+
+
                         </div>
                         <div class="col-6 col-md-auto">
                             <div class="d-flex flex-row-reverse">

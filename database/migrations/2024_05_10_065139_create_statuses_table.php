@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('soustaches', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->integer('tache_id')->contrained();
-            $table->string('name');
-            $table->string('status_id');
-            $table->string('description')->nullable();
-            $table->integer('order')->default(0);
+            $table->string("name");
+            $table->string("color1")->nullable();
+            $table->string("color2")->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('soustaches');
+        Schema::dropIfExists('statuses');
     }
 };
