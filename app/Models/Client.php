@@ -6,6 +6,7 @@ use App\SearchTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Client extends Model
 {
@@ -24,5 +25,15 @@ class Client extends Model
     public function projets(): HasMany
     {
         return $this->hasMany(Projet::class);
+    }
+
+    /**
+     * Get all of the taches for the Client
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function taches(): HasManyThrough
+    {
+        return $this->hasManyThrough(Tache::class, Projet::class);
     }
 }

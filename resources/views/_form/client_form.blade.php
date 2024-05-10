@@ -1,20 +1,17 @@
 <div class="col-auto mb-3">
     @if ($clientForm->logo)
-    {{-- @if($clientForm->logo?->temporaryUrl())
-    <img src="{{ $clientForm->logo?->temporaryUrl() }}" alt="" class="logo rounded logo-upload">
-    @else --}}
-
-    <img src="{{ $clientForm->logo }}" alt="" class="avatar rounded avatar-upload">
-    {{-- @endif --}}
-
+        <img src="{{ $clientForm->logo->temporaryUrl() ?? '' }}"  alt="" class="avatar p-1 rounded avatar-upload">
     @else
-    <input type="file" id="file" accept="image/*" style="display: none" wire:model="clientForm.logo">
-    <label for="file" href="#" class="avatar avatar-upload rounded">
-        <i class="ti ti-plus"></i>
-        <span class="avatar-upload-text">Add</span>
-    </label>
+        <input type="file" id="file" accept="image/*" style="display: none" wire:model="clientForm.logo">
+        <label for="file" href="#" class="avatar avatar-upload rounded">
+            <i class="ti ti-plus"></i>
+            <span class="avatar-upload-text">Ajouter</span>
+        </label>
     @endif
 </div>
+
+
+
 <div class="col mb-3">
     <label class="form-label">Nom du client</label>
     <input type="text" class="form-control" wire:model='clientForm.name' />

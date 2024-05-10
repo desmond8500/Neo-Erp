@@ -55,7 +55,7 @@
         <script> window.addEventListener('close-editClient', event => { $('#editClient').modal('hide'); }) </script>
     @endcomponent
 
-    @component('components.info-modal', ["id"=>'infoModal', 'title'=> 'Information', 'type'=>'danger'])
+    @component('components.info-modal', ["id"=>'infoModal', 'title'=> 'Information', 'type'=>$message_type])
 
         {!! nl2br($message ?? 'Description') !!}
 

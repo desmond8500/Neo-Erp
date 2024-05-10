@@ -9,7 +9,7 @@
                 @isset ($client->logo)
                     <img src="{{ asset($client->logo) }}" alt="C" class="avatar">
                 @else
-                    <img src="{{ asset('img/avatar/office.png') }}" alt="C" class="avatar">
+                    <img src="{{ asset('img/avatar/office.png') }}" alt="C" class="avatar p-1">
                 @endisset
             </a>
             <a class="col cursor-pointer text-white" href="{{ route('client', ['client_id'=>$client->id ?? 1]) }}"
@@ -37,7 +37,7 @@
     <div class="d-flex justify-content-between pt-2 pb-2">
         @isset ($client)
             <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Projets <b class="ms-2 badge bg-primary" >{{ $client->projets->count() ?? '0' }}</b></div>
-            <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Taches en cours <b class="ms-2 badge bg-primary" >??</b></div>
+            <div class="d-flex align-content-center"> <i class="ti ti-box"></i> Taches en cours <b class="ms-2 badge bg-primary" >{{ $client->taches->count() ?? '0' }}</b></div>
         @endisset
     </div>
 

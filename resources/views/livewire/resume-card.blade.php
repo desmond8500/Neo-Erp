@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="card-body">
-                    <div class="row ">
+                    <div class="row align-items-center">
                         <div class="col-12 col-md">
                             <div class="border-bottom pb-2">
                                 <div>

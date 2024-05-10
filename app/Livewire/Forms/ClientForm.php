@@ -34,7 +34,7 @@ class ClientForm extends Form
             $client->logo = MainController::storeImage("clients/$client->id/logo", $this->logo);
             $client->save();
         }
-        $this->reset('name', 'description', 'adresse');
+        $this->reset('logo','name', 'description', 'adresse');
     }
 
     function set($model_id){
@@ -49,11 +49,12 @@ class ClientForm extends Form
     }
 
     function update(){
-        // if ($this->logo) {
-        // // if ($this->logo != $this->client->logo) {
-        //     $this->client->logo = MainController::storeImage("clients/". $this->client->id."/logo", $this->logo, true);
-        //     $this->client->save();
-        // }
+        if (!$this->client->logo) {
+            if ($this->logo) {
+                $this->client->logo = MainController::storeImage("clients/". $this->client->id."/logo", $this->logo);
+                $this->client->save();
+            }
+        }
 
         $this->fix();
 

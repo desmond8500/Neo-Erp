@@ -6,15 +6,19 @@ use App\Livewire\Forms\ClientForm;
 use App\Models\Client;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ClientsPage extends Component
 {
+    use WithFileUploads;
     public $breadcrumbs = array(
         array("name" => "Clients", "route" => "clients"),
     );
     public $search;
     public $message;
+    public $message_type = 'primary';
     public ClientForm $clientForm;
+    public $avatar;
 
     #[On('get-clients')]
     public function render()
@@ -38,6 +42,7 @@ class ClientsPage extends Component
 
     function update()
     {
+        $this->clientForm->logo = $this->avatar;
         $this->clientForm->update();
         $this->dispatch('close-editClient');
         $this->render();
@@ -45,11 +50,15 @@ class ClientsPage extends Component
 
     function delete($client_id)
     {
+        // $this->message = "$client_id";
+        // $this->dispatch('open-infoModal');
+
         $this->clientForm->set($client_id);
         $client = Client::find($client_id);
 
         if ($client->projets->count()) {
-            $this->message = 'Ce client a des projets, il faut les supprimer avant';
+            $this->message = 'Ce client a des projets, il faut les supprimer avant de supprimer ce dernier';
+            $this->message_type = 'danger';
             $this->dispatch('open-infoModal');
         } else {
             $this->clientForm->delete();
