@@ -27,14 +27,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="triggerId">
                     <button class="dropdown-item" wire:click="projet_edit('{{ $projet->id }}')">Editer</button>
-                    <button class="dropdown-item text-danger disabled">Supprimer
-                    </button>
+                    <button class="dropdown-item text-danger" wire:click="projet_delete('{{ $projet->id }}')">Supprimer </button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <b>Description :</b>
-            <div class="text-muted text-justify mt-1">{!! nl2br($projet->description) !!}</div>
         </div>
     </div>
 </div>

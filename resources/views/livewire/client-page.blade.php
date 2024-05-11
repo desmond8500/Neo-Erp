@@ -1,5 +1,5 @@
 <div>
-    @component('components.page-header', ['title'=>'Client', 'breadcrumbs'=>$breadcrumbs])
+    @component('components.page-header', ['title'=>'Client : '.$client->name, 'breadcrumbs'=>$breadcrumbs])
         @livewire('projet-add',['client_id'=>$client->id])
     @endcomponent
 

@@ -50,9 +50,6 @@ class ClientsPage extends Component
 
     function delete($client_id)
     {
-        // $this->message = "$client_id";
-        // $this->dispatch('open-infoModal');
-
         $this->clientForm->set($client_id);
         $client = Client::find($client_id);
 

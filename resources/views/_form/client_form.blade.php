@@ -1,6 +1,6 @@
 <div class="col-auto mb-3">
     @if ($clientForm->logo)
-        <img src="{{ $clientForm->logo->temporaryUrl() ?? '' }}"  alt="" class="avatar p-1 rounded avatar-upload">
+        {{-- <img src="{{ $clientForm->logo->temporaryUrl() ?? '' }}"  alt="" class="avatar p-1 rounded avatar-upload"> --}}
     @else
         <input type="file" id="file" accept="image/*" style="display: none" wire:model="clientForm.logo">
         <label for="file" href="#" class="avatar avatar-upload rounded">

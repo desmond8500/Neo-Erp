@@ -14,6 +14,9 @@
                     <div class="card-title">Informations sur le projet</div>
                 </div>
                 <div class="card-body">
+                    {!! nl2br($projet->description) !!}
+                </div>
+                <div class="card-body">
                     @if ($projet->start_date)
                         <div class="d-flex justify-content-between">
                             <div class="fw-bold text-primary">Date de début : </div>

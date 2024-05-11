@@ -36,6 +36,7 @@ class ClientPage extends Component
     }
 
     // Client
+    public $message_type = 'primary';
 
     function edit($client_id)
     {
@@ -49,6 +50,22 @@ class ClientPage extends Component
         $this->client = Client::find($this->client_id);
         $this->dispatch('close-editClient');
         $this->render();
+    }
+
+    function delete($client_id)
+    {
+        $this->clientForm->set($client_id);
+        $client = Client::find($client_id);
+
+        if ($client->projets->count()) {
+            $this->message = 'Ce client a des projets, il faut les supprimer avant de supprimer ce dernier';
+            $this->message_type = 'danger';
+            $this->dispatch('open-infoModal');
+        } else {
+            $this->clientForm->delete();
+            $this->dispatch('close-editClient');
+            $this->dispatch('get-clients');
+        }
     }
 
     // Projet
@@ -72,21 +89,21 @@ class ClientPage extends Component
         $this->dispatch('close-editProjet');
     }
 
-    function projet_delete()
+    function projet_delete($projet_id)
     {
-        $projet = Projet::find($this->selected);
+        $projet = Projet::find($projet_id);
+        $this->projetForm->set($projet_id);
 
-        // if ($projet->taches()->count()) {
-        //     $this->message = 'Ce client a des projets, il faut les supprimer avant';
-        //     $this->dispatch('open-infoModal');
-        // } else {
+        if ($projet->taches->count()) {
+            $this->message = 'Ce projet a des taches, il faut les supprimer avant de supprimer ce dernier';
+            $this->message_type = 'danger';
+            $this->dispatch('open-infoModal');
+        } else {
             $this->projetForm->delete();
-            $this->dispatch('close-editProjet');
+            $this->dispatch('close-editClient');
             $this->dispatch('get-clients');
-        // }
-
-
-    }
+        }
+     }
 
     function projet_toggleFavorite()
     {
