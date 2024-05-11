@@ -7,10 +7,12 @@ use App\Models\Client;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ClientsPage extends Component
 {
     use WithFileUploads;
+    use WithPagination;
     public $breadcrumbs = array(
         array("name" => "Clients", "route" => "clients"),
     );
@@ -20,12 +22,20 @@ class ClientsPage extends Component
     public ClientForm $clientForm;
     public $avatar;
 
+    protected $paginationTheme = 'bootstrap';
+
+    public function mount(){
+        $this->breadcrumbs = array(
+            array('name' => 'Clients', 'route' => route('clients')),
+        );
+    }
+
     #[On('get-clients')]
     public function render()
     {
         return view('livewire.clients-page',[
             "breadcrumbs" => $this->breadcrumbs,
-            'clients' => Client::search($this->search)->paginate(10),
+            'clients' => Client::search($this->search)->paginate(20),
         ]);
     }
 

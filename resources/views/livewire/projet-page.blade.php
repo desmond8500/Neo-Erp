@@ -1,6 +1,6 @@
 <div>
-    @component('components.page-header', ['title'=>'Projet', 'breadcrumbs'=>$breadcrumbs])
-    @livewire('tache-add', ['projet_id' => $projet->id])
+    @component('components.page-header', ['title'=>'Projet : '.$projet->name, 'breadcrumbs'=>$breadcrumbs])
+        @livewire('tache-add', ['projet_id' => $projet->id])
     @endcomponent
 
     <div class="row">
@@ -31,6 +31,18 @@
                     @endif
                 </div>
             </div>
+
+            <div class="d-grid gap-2">
+                <div class="border rounded bg-white d-flex justify-content-between p-2" >
+                    <div>Taches actives</div>
+                    <div class="badge">0</div>
+                </div>
+                <div class="border rounded bg-white d-flex justify-content-between p-2" >
+                    <div>Taches Terminées</div>
+                    <div class="badge">0</div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-9">
             @livewire('resume-card',['projet_id'=> $projet->id])

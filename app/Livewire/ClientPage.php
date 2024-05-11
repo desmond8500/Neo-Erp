@@ -9,9 +9,15 @@ use App\Models\Projet;
 use App\Models\Tache;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\WithPagination;
 
 class ClientPage extends Component
 {
+    use WithFileUploads;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $client;
     public $client_id;
     public ClientForm $clientForm;
@@ -31,7 +37,7 @@ class ClientPage extends Component
         );
         return view('livewire.client-page',[
             'breadcrumbs' => $breadcrumbs,
-            'projets' => Projet::where('client_id', $this->client->id)->paginate(8),
+            'projets' => Projet::where('client_id', $this->client->id)->paginate(15),
         ]);
     }
 

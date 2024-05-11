@@ -26,6 +26,11 @@
 
                     @endcomponent
                 @endforelse
+                <div class="col-md-12">
+                    <div class="card p-2">
+                        {{ $projets->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

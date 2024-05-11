@@ -34,7 +34,7 @@
 
         @endforelse
 
-        <div>
+        <div class="card p-2">
             {{ $clients->links() }}
         </div>
     </div>
