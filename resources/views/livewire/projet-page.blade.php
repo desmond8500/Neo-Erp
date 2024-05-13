@@ -9,28 +9,34 @@
                 @include('_card.projet_card',['projet'=> $projet])
             </div>
 
-            <div class="card mb-2">
-                <div class="card-header">
-                    <div class="card-title">Informations sur le projet</div>
-                </div>
-                <div class="card-body">
-                    {!! nl2br($projet->description) !!}
-                </div>
-                <div class="card-body">
-                    @if ($projet->start_date)
-                        <div class="d-flex justify-content-between">
-                            <div class="fw-bold text-primary">Date de début : </div>
-                            <div class="fw-bold">{{ $projet->start_date }}</div>
+            @if ($projet->description || $projet->start_date || $projet->end_date)
+                <div class="card mb-2">
+                    <div class="card-header">
+                        <div class="card-title">Informations sur le projet</div>
+                    </div>
+                    @if ($projet->description)
+                        <div class="card-body">
+                            {!! nl2br($projet->description) !!}
                         </div>
                     @endif
-                    @if ($projet->end_date)
-                        <div class="d-flex justify-content-between">
-                            <div class="fw-bold text-primary">Date de fin :</div>
-                            <div class="fw-bold">{{ $projet->end_date }}</div>
+                    @if ($projet->start_date || $projet->end_date)
+                        <div class="card-body">
+                            @if ($projet->start_date)
+                                <div class="d-flex justify-content-between">
+                                    <div class="fw-bold text-primary">Date de début : </div>
+                                    <div class="fw-bold">{{ $projet->start_date }}</div>
+                                </div>
+                            @endif
+                            @if ($projet->end_date)
+                                <div class="d-flex justify-content-between">
+                                    <div class="fw-bold text-primary">Date de fin :</div>
+                                    <div class="fw-bold">{{ $projet->end_date }}</div>
+                                </div>
+                            @endif
                         </div>
                     @endif
                 </div>
-            </div>
+            @endif
 
             <div class="d-grid gap-2">
                 <div class="border rounded bg-white d-flex justify-content-between p-2" >

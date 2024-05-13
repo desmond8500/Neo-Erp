@@ -27,6 +27,7 @@ class ClientForm extends Form
     }
 
     function store(){
+        $this->validate();
         $this->fix();
         $client = Client::create($this->all());
 
@@ -49,6 +50,7 @@ class ClientForm extends Form
     }
 
     function update(){
+        $this->validate();
         if (!$this->client->logo) {
             if ($this->logo) {
                 $this->client->logo = MainController::storeImage("clients/". $this->client->id."/logo", $this->logo);

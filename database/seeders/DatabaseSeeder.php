@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         Progression::create(['name'=> 'Terminée', 'color'=>'green']);
         Progression::create(['name'=> 'En Attente', 'color'=>'grey']);
         Progression::create(['name'=> 'En Retard', 'color'=>'red']);
+        Progression::create(['name'=> 'Cloturé', 'color'=>'purple']);
 
         // Priorite
         Priorite::create(['name'=>'Faible', 'color'=>'blue']);

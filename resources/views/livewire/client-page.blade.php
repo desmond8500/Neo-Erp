@@ -8,12 +8,14 @@
             <div class="mb-2">
                 @include('_card.client_card',['client'=>$client])
             </div>
-            <div class="card mb-2">
-                <div class="card-body">
-                    <div class="card-title fw-bold">Description</div>
-                    {!! nl2br($client->description) !!}
+            @if ($client->description)
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="card-title fw-bold">Description</div>
+                        {!! nl2br($client->description) !!}
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         <div class="col-md-9">
             <div class="row g-2">
