@@ -1,5 +1,5 @@
 <div class="row g-2">
-    @foreach ($taches as $key => $tache)
+    @forelse ($taches as $key => $tache)
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -90,7 +90,11 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        @component('components.no-result')
+            Aucune tache n'a encore été ajouté.
+        @endcomponent
+    @endforelse
 
     @component('components.modal', ["id"=>'editTache', 'title' => 'Editer une tache'])
     <form class="row" wire:submit="update">

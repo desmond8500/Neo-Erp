@@ -14,24 +14,12 @@
             <div class="col-md-3">
                 @include('_card.client_card')
             </div>
-            @empty
+        @empty
+            <div class="col-md-12">
+               @component('components.no-result')
 
-            <div class="empty">
-                <div class="empty-icon">
-                    <i class="ti ti-mood-empty"></i>
-                </div>
-                <p class="empty-title">Pas de client trouvé</p>
-                <p class="empty-subtitle text-secondary">
-                    Ajoutez de nouveaux clients ou changez de critères de recherche.
-                </p>
-                <div class="empty-action">
-                    <button class="btn btn-primary" wire:click='clientSearch()'>
-                        <i class="ti ti-mood-empty"></i>
-                        Rechercher de nouveau
-                    </button>
-                </div>
+               @endcomponent
             </div>
-
         @endforelse
 
         <div class="card p-2">
