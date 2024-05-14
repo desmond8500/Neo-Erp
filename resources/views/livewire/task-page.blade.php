@@ -1,5 +1,8 @@
 <div>
     @component('components.page-header', ['title'=>'Taches', 'breadcrumbs'=>$breadcrumbs])
+        @component('components.off-canvas',['titre'=>'Demo'])
+            Informations
+        @endcomponent
     @endcomponent
 
     <div class="row g-2">
@@ -187,10 +190,6 @@
         </form>
         <script> window.addEventListener('open-editLink', event => { $('#editLink').modal('show'); }) </script>
         <script> window.addEventListener('close-editLink', event => { $('#editLink').modal('hide'); }) </script>
-    @endcomponent
-
-    @component('components.off-canvas',['titre'=>'Demo'])
-        Informations
     @endcomponent
 
     {{-- Sous tache --}}

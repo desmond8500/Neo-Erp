@@ -29,6 +29,9 @@ class ProjetPage extends Component
         ]);
     }
 
+    // Projet
+    public $projetTab = false;
+
     #[On('get-projet')]
     function getProjet(){
         $this->projet = Projet::find($this->projet->id);

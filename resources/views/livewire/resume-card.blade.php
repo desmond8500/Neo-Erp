@@ -8,6 +8,18 @@
                             <a class="text-dark fs-3" href="{{ route('tache',['tache_id'=>$tache->id]) }}">{{ $tache->titre }}</a>
                         </div>
                     </div>
+                    <div class="card-actions">
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-action " data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ti ti-dots-vertical"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" wire:click="edit('{{ $tache->id }}')"> Editer</a>
+                                <a class="dropdown-item" href="{{ route('tache',['tache_id'=> $tache->id]) }}">Détails</a>
+                                <a class="dropdown-item text-danger"> Delete user</a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="card-body">
@@ -21,8 +33,6 @@
                                     <span class="fw-bold">Projet : </span><a href="{{ route('projet',['projet_id'=> $tache->projet->id]) }}">{{ $tache->projet->name }}</a>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="col-6 col-md-auto">
                             <div class="d-flex flex-row-reverse">
@@ -42,16 +52,7 @@
                             </div>
                         </div>
                         <div class="col-6 col-md-auto">
-                            <div class="dropdown">
-                                <a href="#" class="btn btn-icon btn-primary " data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" wire:click="edit('{{ $tache->id }}')"> Editer</a>
-                                    <a class="dropdown-item" href="{{ route('tache',['tache_id'=> $tache->id]) }}">Détails</a>
-                                    <a class="dropdown-item text-danger"> Delete user</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="row g-2">
@@ -97,20 +98,16 @@
     @endforelse
 
     @component('components.modal', ["id"=>'editTache', 'title' => 'Editer une tache'])
-    <form class="row" wire:submit="update">
-        @include('_form.tache_form')
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" wire:click='delete()'
-                wire:confirm="Etes vous sur de vouloir supprimer cette tache ?"><i class="ti ti-trash"></i></button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </div>
-    </form>
-    <script>
-        window.addEventListener('open-editTache', event => { $('#editTache').modal('show'); })
-    </script>
-    <script>
-        window.addEventListener('close-editTache', event => { $('#editTache').modal('hide'); })
-    </script>
+        <form class="row" wire:submit="update">
+            @include('_form.tache_form')
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" wire:click='delete()'
+                    wire:confirm="Etes vous sur de vouloir supprimer cette tache ?"><i class="ti ti-trash"></i></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+        <script> window.addEventListener('open-editTache', event => { $('#editTache').modal('show'); }) </script>
+        <script> window.addEventListener('close-editTache', event => { $('#editTache').modal('hide'); }) </script>
     @endcomponent
 </div>

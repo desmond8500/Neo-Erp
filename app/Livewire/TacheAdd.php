@@ -30,10 +30,9 @@ class TacheAdd extends Component
 
     function store()
     {
-
-
         $this->tache_form->store();
         $this->dispatch('close-addTask');
         $this->dispatch('get-tasks');
+        $this->dispatch('get-projet');
     }
 }

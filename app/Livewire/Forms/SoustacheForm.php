@@ -13,6 +13,7 @@ class SoustacheForm extends Form
 
     #[Rule('required')]
     public $tache_id;
+    #[Rule('required')]
     public $name;
     public $status_id;
     public $description;
@@ -22,7 +23,7 @@ class SoustacheForm extends Form
     }
 
     function store(){
-        // $this->validate();
+        $this->validate();
         $this->fix();
         Soustache::create($this->all());
     }

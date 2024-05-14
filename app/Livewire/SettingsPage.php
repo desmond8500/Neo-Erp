@@ -16,6 +16,7 @@ class SettingsPage extends Component
         return view('livewire.settings-page',[
             'breadcrumbs' => $breadcrumbs,
             'progressions' => Progression::all(),
+            'user' => auth()->user()
         ]);
     }
 

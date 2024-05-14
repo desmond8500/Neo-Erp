@@ -24,6 +24,14 @@ class DatabaseSeeder extends Seeder
             'fonction' => 'Administrateur',
             'password' => Hash::make('passer1234'),
         ]);
+        // User
+        User::create([
+            'prenom' => 'test',
+            'nom' => 'test',
+            'email' => 'test@test.com',
+            'fonction' => 'user',
+            'password' => Hash::make('passer1234'),
+        ]);
 
         // Progression
         Progression::create(['name'=> 'Non Démarrée', 'color'=>'blue']);
